@@ -2,7 +2,7 @@ name: Jenkinsfile
 on:
   workflow_dispatch:
 
-jobs:
+jobs: 
   run-container:
     runs-on: ubuntu-latest
     steps:
