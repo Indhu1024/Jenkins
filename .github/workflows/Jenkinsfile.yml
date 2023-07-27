@@ -11,5 +11,5 @@ jobs:
       - name: Ping Google
         run: |
           nslookup google.com
-          ping -c 5 8.8.8.8
+          ping -c 5 142.250.114.101
           
