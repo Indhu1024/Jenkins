@@ -9,4 +9,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Ping Google
-        run: ping -c 5 8.8.8.8
+        run: |
+          nslookup google.com
+          ping -c 5 8.8.8.8
+          
