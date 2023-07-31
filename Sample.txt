@@ -1,1 +1,1 @@
-This is Jenkins task!!
+JOB1 : Pull changes and build docker image then push to hub
