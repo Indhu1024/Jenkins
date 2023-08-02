@@ -23,7 +23,7 @@ pipeline {
                 // Build the Docker image
                 script {
                     docker.withRegistry('https://hub.docker.com/', 'docker-hub-credentials') {
-                        def customImage = docker.build('indhu1024/my-docker-image:latest', 'https://github.com/Indhu1024/Jenkins/blob/master/Jenkins%20Job_1.groovy')
+                        def customImage = docker.build('indhu1024/my-docker-image:latest', 'C:\ProgramData\Jenkins\.jenkins\workspace\Jenkins Job_1')
                         customImage.push()
                     }
                 }
