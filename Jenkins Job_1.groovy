@@ -15,7 +15,7 @@ pipeline {
                 // Build the Docker image
                 script {
                     docker.withRegistry('https://hub.docker.com/', 'docker-credentials') {
-                        def customImage = docker.build('https://hub.docker.com//my-docker-image:latest', './path/to/dockerfile')
+                        def customImage = docker.build('https://hub.docker.com//my-docker-image:latest', 'https://github.com/Indhu1024/Jenkins.git')
                         customImage.push()
                     }
                 }
