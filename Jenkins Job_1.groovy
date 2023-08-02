@@ -16,8 +16,11 @@ pipeline {
             steps {
                 // Build the Docker image
                 script {
-                    docker.withRegistry('https://hub.docker.com/', 'docker-hub-credentials') {
-                        def customImage = docker.build('indhu1024/my-docker-image:latest', 'C:\ProgramData\Jenkins\.jenkins\workspace\Jenkins Job_1.groovy')
+                     def dockerfilePath = 'C:\ProgramData\Jenkins\.jenkins\workspace\Jenkins Job_1'
+                     def absoluteDockerfilePath = "${WORKSPACE}/${dockerfilePath}"
+                     echo "Dockerfile Path: ${absoluteDockerfilePath}"
+                     docker.withRegistry('https://hub.docker.com/', 'docker-hub-credentials') {
+                        def customImage = docker.build('indhu1024/my-docker-image:latest', "-f ${absoluteDockerfilePath} .")
                         customImage.push()
                     }
                 }
