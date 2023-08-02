@@ -14,8 +14,8 @@ pipeline {
             steps {
                 // Build the Docker image
                 script {
-                    docker.withRegistry('https://your-docker-registry', 'docker-credentials') {
-                        def customImage = docker.build('your-docker-registry/your-docker-image:latest', './path/to/dockerfile')
+                    docker.withRegistry('https://hub.docker.com/', 'docker-credentials') {
+                        def customImage = docker.build('https://hub.docker.com//my-docker-image:latest', './path/to/dockerfile')
                         customImage.push()
                     }
                 }
