@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the Jenkins repository
-                git 'https://github.com/indhu1024/Jenkins.git'
+                git 'https://github.com/Indhu1024/Jenkins.git'
             }
         }
 
