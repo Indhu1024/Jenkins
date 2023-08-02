@@ -1,1 +1,1 @@
-JOB1 : Pull changes and build docker image then pushes to hub!!
+JOB1 : Pull changes and build docker image then pushes image to hub!!
