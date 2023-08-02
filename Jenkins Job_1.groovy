@@ -14,7 +14,7 @@ pipeline {
             steps {
                 // Build the Docker image
                 script {
-                    docker.withRegistry('https://hub.docker.com/repositories/indhu1024', 'docker-hub-credentials') {
+                    docker.withRegistry('https://hub.docker.com/', 'docker-hub-credentials') {
                         def customImage = docker.build('indhu1024/my-docker-image:latest', 'https://github.com/Indhu1024/Jenkins/blob/master/Jenkins%20Job_1.groovy')
                         customImage.push()
                     }
