@@ -10,12 +10,6 @@ pipeline {
             }
         }
         
-        stage('View Workspace') {
-            steps {
-                // View workspace contents
-                sh 'ls -la ${WORKSPACE}'
-            }
-        }
     
 
         stage('Docker Build') {
