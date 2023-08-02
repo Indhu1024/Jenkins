@@ -9,6 +9,14 @@ pipeline {
                 git 'https://github.com/Indhu1024/Jenkins.git'
             }
         }
+        
+        stage('View Workspace') {
+            steps {
+                // View workspace contents
+                sh 'ls -la ${WORKSPACE}'
+            }
+        }
+    
 
         stage('Docker Build') {
             steps {
