@@ -16,7 +16,7 @@ pipeline {
             steps {
                 // Build the Docker image
                 script {
-                     def dockerfilePath = 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Jenkins Job_1\\Jenkins Job_1.groovy'
+                     def dockerfilePath = 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Jenkins Job_1'
                      def absoluteDockerfilePath = "${WORKSPACE}/${dockerfilePath}"
                      echo "Dockerfile Path: ${absoluteDockerfilePath}"
                      withDockerRegistry(url:'https://hub.docker.com/', credentialsId:'docker-hub-credentials') {
