@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the Jenkins repository
-                git 'https://github.com/your-username/Jenkins.git'
+                git 'https://github.com/indhu1024/Jenkins.git'
             }
         }
 
@@ -25,7 +25,7 @@ pipeline {
         stage('Trigger Second Job') {
             steps {
                 // Trigger the second Jenkins job (provide the job name you created in Jenkins)
-                build job: 'SecondJob'
+                build job: 'Jenkins Job_2'
             }
         }
     }
