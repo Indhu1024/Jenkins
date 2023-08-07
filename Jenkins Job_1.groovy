@@ -16,8 +16,8 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]){
         script {
             def dockerRegistryCredentials = [
-           "username": jenkinsCredentials.username,
-           "password": jenkinsCredentials.password.getPlainText()
+           "username": env.DOCKER_HUB_USERNAME,
+           "password": env.DOCKER_HUB_PASSWORD
           ]
 
                     docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
