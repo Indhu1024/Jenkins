@@ -14,7 +14,7 @@ pipeline {
     steps {
         // Build the Docker image
         script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                    docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
                         docker.image('my-docker-image:newtag').build()
                     }
             //def dockerfilePath = 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Jenkins Job_1'
