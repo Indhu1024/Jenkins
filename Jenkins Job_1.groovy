@@ -17,29 +17,16 @@ pipeline {
             def dockerfilePath = 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Jenkins Job_1'
             def absoluteDockerfilePath = "${WORKSPACE}/${dockerfilePath}"
             echo "Dockerfile Path: ${absoluteDockerfilePath}"
-            
-            def dockerLoginCommand = "docker login -u indhu1024 --password-stdin https://hub.docker.com/"
-            def dockerLoginProcess = dockerLoginCommand.execute()
-            dockerLoginProcess.withWriter { writer ->
-                writer.write('Indhu@2000')
-            }
-            dockerLoginProcess.waitFor()
-            
-            if (dockerLoginProcess.exitValue() != 0) {
-                error("Docker login failed: ${dockerLoginProcess.err.text}")
-            }
-            
+            sh "docker login -u indhu1024 -p 'Indhu@2000' https://hub.docker.com/"
+           
             withDockerRegistry(url:'https://hub.docker.com/', credentialsId:'docker-hub-credentials') {
-                def customImage = docker.build('indhu1024/my-docker-image:latest', "-f ${absoluteDockerfilePath} .")
-                customImage.push()
+              
+                 sh "docker build -t indhu1024/my-docker-image:latest -f ${absoluteDockerfilePath} ."
+                sh "docker push indhu1024/my-docker-image:latest"
             }
         }
     }
 }
-
-
-       
-
         stage('Trigger Second Job') {
             steps {
                 // Trigger the second Jenkins job (provide the job name you created in Jenkins)
