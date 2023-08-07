@@ -14,6 +14,11 @@ pipeline {
     steps {
         // Build the Docker image
         script {
+            def dockerRegistryCredentials = [
+           "username": jenkinsCredentials.username,
+           "password": jenkinsCredentials.password.getPlainText()
+          ]
+
                     docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
                         docker.image('my-docker-image:newtag').build()
                     }
