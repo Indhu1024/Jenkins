@@ -18,7 +18,7 @@ pipeline {
             steps {
                 // Run the container and print the file changes
                 script {
-                    docker.image(''https://hub.docker.com/my-docker-image:latest').inside {
+                    docker.image('https://hub.docker.com/my-docker-image:latest').inside {
                         sh 'cat Sample.txt'
                     }
                 }
