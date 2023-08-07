@@ -13,6 +13,7 @@ pipeline {
     stage('Docker Build') {
     steps {
         // Build the Docker image
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
         script {
             def dockerRegistryCredentials = [
            "username": jenkinsCredentials.username,
@@ -21,6 +22,7 @@ pipeline {
 
                     docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
                         docker.image('my-docker-image:newtag').build()
+                        docker.image('my-docker-image:newtag').push()
                     }
             //def dockerfilePath = 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Jenkins Job_1'
             //def absoluteDockerfilePath = "${WORKSPACE}/${dockerfilePath}"
@@ -34,17 +36,9 @@ pipeline {
             //hi}
         }
     }
+    }
+    }
 }
-        stage('Push Docker Image to Docker Hub') {
-            steps {
-                // Push the built Docker image to Docker Hub
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        docker.image('my-docker-image:newtag').push()
-                    }
-                }
-            }
-        }
         stage('Trigger Second Job') {
             steps {
                 // Trigger the second Jenkins job (provide the job name you created in Jenkins)
