@@ -8,7 +8,7 @@ pipeline {
                 // Pull the Docker image
                 script {
                     docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
-                        docker.image(''https://hub.docker.com/my-docker-image:latest').pull()
+                        docker.image('https://hub.docker.com/my-docker-image:latest').pull()
                     }
                 }
             }
