@@ -13,7 +13,7 @@ pipeline {
     stage('Docker Build') {
     steps {
         // Build the Docker image
-        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]){
         script {
             def dockerRegistryCredentials = [
            "username": jenkinsCredentials.username,
@@ -38,7 +38,7 @@ pipeline {
     }
     }
     }
-}
+
         stage('Trigger Second Job') {
             steps {
                 // Trigger the second Jenkins job (provide the job name you created in Jenkins)
@@ -46,4 +46,5 @@ pipeline {
             }
         }
     }
+}
 
