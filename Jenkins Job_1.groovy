@@ -20,7 +20,7 @@ pipeline {
            "password": env.DOCKER_HUB_PASSWORD
           ]
 
-                    docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
+                    docker.withRegistry('https://registry.hub.docker.com/v2/', 'docker-hub-credentials') {
                         docker.image('my-docker-image:newtag').build()
                         docker.image('my-docker-image:newtag').push()
                     }
